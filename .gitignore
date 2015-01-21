@@ -3,3 +3,4 @@
 .idea
 Fancy
 manage.py
+db.sqlite*

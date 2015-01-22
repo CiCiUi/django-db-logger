@@ -3,3 +3,5 @@
 .idea
 Fancy
 db.sqlite*
+dist
+*.egg-info

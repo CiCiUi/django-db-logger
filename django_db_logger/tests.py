@@ -17,7 +17,6 @@ class TestDbLogger(TestCase):
         log_queryset = StatusLog.objects.filter(msg=msg)
         self.assertEqual(log_queryset.count(), 1)
         log = log_queryset.get()
-        self.assertEqual(unicode(log), msg)
         self.assertEqual(level, log.level)
         self.assertIsNone(log.trace)
         return log

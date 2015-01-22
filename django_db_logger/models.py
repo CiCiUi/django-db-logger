@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import logging
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -20,6 +21,9 @@ class StatusLog(models.Model):
     create_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        return self.msg
+
+    def __unicode__(self):
         return self.msg
 
     class Meta:

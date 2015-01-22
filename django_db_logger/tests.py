@@ -1,3 +1,5 @@
+# encoding: utf-8
+from __future__ import unicode_literals
 import logging
 from django.contrib.admin import AdminSite
 from django.test import TestCase
@@ -15,7 +17,7 @@ class TestDbLogger(TestCase):
         log_queryset = StatusLog.objects.filter(msg=msg)
         self.assertEqual(log_queryset.count(), 1)
         log = log_queryset.get()
-        self.assertEqual(str(log), msg)
+        self.assertEqual(unicode(log), msg)
         self.assertEqual(level, log.level)
         self.assertIsNone(log.trace)
         return log

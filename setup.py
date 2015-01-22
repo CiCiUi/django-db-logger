@@ -18,6 +18,7 @@ setup(
     url='https://ciciui.com/',
     author='zhangshine',
     author_email='zhangshine0125@gmail.com',
+    install_requires=['django>=1.7'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

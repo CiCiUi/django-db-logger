@@ -13,7 +13,7 @@ class StatusLogAdmin(admin.ModelAdmin):
     list_per_page = 10
 
     def colored_msg(self, instance):
-        if instance.level in [logging.NOTSET, logging.INFO, logging]:
+        if instance.level in [logging.NOTSET, logging.INFO]:
             color = 'green'
         elif instance.level in [logging.WARNING, logging.DEBUG]:
             color = 'orange'
@@ -23,7 +23,7 @@ class StatusLogAdmin(admin.ModelAdmin):
     colored_msg.short_description = 'Message'
 
     def traceback(self, instance):
-        return format_html('<pre><code>{content}</code></pre>', content=instance.trace)
+        return format_html('<pre><code>{content}</code></pre>', content=instance.trace if instance.trace else '')
 
     def create_datetime_format(self, instance):
         return instance.create_datetime.strftime('%Y-%m-%d %X')

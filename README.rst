@@ -2,20 +2,24 @@
 django-db-logger
 ================
 
-Django database logger
+Django logging in database
 
 
 Quick start
 -----------
 
-1. Add "django_db_logger" to your `INSTALLED_APPS` setting like this::
+1. Install::
+
+    pip install django-db-logger
+
+2. Add "django_db_logger" to your `INSTALLED_APPS` setting like this::
 
     INSTALLED_APPS = (
         ...
         'django_db_logger',
     )
 
-2. Add handler and logger to `LOGGING` setting like this::
+3. Add handler and logger to `LOGGING` setting like this::
 
     LOGGING = {
         'version': 1,
@@ -42,8 +46,8 @@ Quick start
         }
     }
 
-3. Run `python manage.py migrate` to create django-db-logger models.
-4. Use `django-db-logger` like this::
+4. Run `python manage.py migrate` to create django-db-logger models.
+5. Use `django-db-logger` like this::
 
     import logging
     db_logger = logging.getLogger('db')

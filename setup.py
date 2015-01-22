@@ -13,7 +13,7 @@ setup(
     packages=['django_db_logger'],
     include_package_data=True,
     license='MIT License',
-    description='Save logging message to database',
+    description='Django logging in database',
     long_description=README,
     url='https://ciciui.com/',
     author='zhangshine',

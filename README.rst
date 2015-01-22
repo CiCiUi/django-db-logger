@@ -8,11 +8,13 @@ Django logging in database
 Quick start
 -----------
 
-1. Install::
+1. Install
+.. code-block:: bash
 
     pip install django-db-logger
 
 2. Add "django_db_logger" to your `INSTALLED_APPS` setting like this::
+.. code-block:: python
 
     INSTALLED_APPS = (
         ...
@@ -20,6 +22,7 @@ Quick start
     )
 
 3. Add handler and logger to `LOGGING` setting like this::
+.. code-block:: python
 
     LOGGING = {
         'version': 1,
@@ -48,6 +51,7 @@ Quick start
 
 4. Run `python manage.py migrate` to create django-db-logger models.
 5. Use `django-db-logger` like this::
+.. code-block:: python
 
     import logging
     db_logger = logging.getLogger('db')
@@ -60,3 +64,5 @@ Quick start
     except Exception as e:
         db_logger.exception(e)
 
+
+6. Get email notified when new release created by watching this package on `CiCiUI <https://ciciui.com/package/54038>`_

@@ -7,7 +7,8 @@ For large projects please use `Sentry <https://github.com/getsentry/sentry>`_
 
 Dependency
 ----------
-* Django>=1.7
+* Django>=1.6
+* Python 2.6+/3.3+
 
 
 Quick start

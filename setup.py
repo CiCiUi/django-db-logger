@@ -18,7 +18,7 @@ setup(
     url='https://github.com/CiCiUi/django-db-logger',
     author='zhangshine',
     author_email='zhangshine0125@gmail.com',
-    install_requires=['django>=1.7'],
+    install_requires=['django>=1.6'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

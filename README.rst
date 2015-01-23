@@ -2,7 +2,12 @@
 django-db-logger
 ================
 
-Django logging in database
+Django logging in database.
+For large projects please use `Sentry <https://github.com/getsentry/sentry>`_
+
+Dependency
+----------
+* Django>=1.7
 
 
 Quick start

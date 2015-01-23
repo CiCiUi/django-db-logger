@@ -9,13 +9,13 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-db-logger',
-    version='0.1',
+    version='0.1.1',
     packages=['django_db_logger'],
     include_package_data=True,
     license='MIT License',
     description='Django logging in database',
     long_description=README,
-    url='https://ciciui.com/',
+    url='https://github.com/CiCiUi/django-db-logger',
     author='zhangshine',
     author_email='zhangshine0125@gmail.com',
     install_requires=['django>=1.7'],

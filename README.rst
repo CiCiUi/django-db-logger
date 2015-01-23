@@ -2,8 +2,16 @@
 django-db-logger
 ================
 
+.. image:: https://travis-ci.org/CiCiUi/django-db-logger.svg?branch=master
+    :target: https://travis-ci.org/CiCiUi/django-db-logger
+
 Django logging in database.
 For large projects please use `Sentry <https://github.com/getsentry/sentry>`_
+
+Screenshot
+----------
+.. image:: https://ciciui.github.io/django-db-logger/static/img/django-db-logger.png
+    :target: https://travis-ci.org/CiCiUi/django-db-logger
 
 Dependency
 ----------

@@ -26,3 +26,4 @@ class StatusLog(models.Model):
 
     class Meta:
         ordering = ('-create_datetime',)
+        app_label = 'django_db_logger'

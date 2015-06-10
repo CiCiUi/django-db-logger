@@ -18,6 +18,9 @@ Dependency
 * Django>=1.6
 * Python 2.6+/3.3+
 
+License
+-------
+MIT
 
 Quick start
 -----------

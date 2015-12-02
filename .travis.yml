@@ -20,6 +20,8 @@ matrix:
       python: "2.6"
     - env: DJANGO=1.9
       python: "2.6"
+    - env: DJANGO=1.9
+      pytthon: "3.3"
 
 install:
   - pip install Django==$DJANGO

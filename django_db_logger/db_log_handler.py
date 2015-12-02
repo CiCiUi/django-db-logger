@@ -1,11 +1,11 @@
 import logging
 import traceback
 
-from .models import StatusLog
-
 
 class DatabaseLogHandler(logging.Handler):
     def emit(self, record):
+        from .models import StatusLog
+        
         trace = None
 
         if record.exc_info:

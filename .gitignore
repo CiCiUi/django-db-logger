@@ -5,3 +5,4 @@ Fancy
 db.sqlite*
 dist
 *.egg-info
+.coding-ide

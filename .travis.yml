@@ -5,6 +5,7 @@ python:
   - "2.7"
   - "3.3"
   - "3.4"
+  - "3.5"
 
 env:
   - DJANGO=1.6
@@ -14,8 +15,12 @@ env:
 
 matrix:
   exclude:
+    - env: DJANGO=1.6
+      python: "3.5"
     - env: DJANGO=1.7
       python: "2.6"
+    - env: DJANGO=1.7
+      python: "3.5"
     - env: DJANGO=1.8
       python: "2.6"
     - env: DJANGO=1.9

@@ -85,5 +85,3 @@ Quick start
     except Exception as e:
         db_logger.exception(e)
 
-
-6. Get email notified when new release created by watching this package on `CiCiUI <https://ciciui.com/package/54038>`_

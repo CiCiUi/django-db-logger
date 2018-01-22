@@ -25,11 +25,3 @@ class StatusLogAbstract(models.Model):
 
     class Meta:
         abstract = True
-
-
-@python_2_unicode_compatible
-class StatusLog(StatusLogAbstract):
-
-    class Meta:
-        ordering = ('-create_datetime',)
-        app_label = 'django_db_logger'

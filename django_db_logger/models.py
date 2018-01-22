@@ -13,8 +13,7 @@ LOG_LEVELS = (
 )
 
 
-@python_2_unicode_compatible
-class StatusLog(models.Model):
+class StatusLogAbstract(models.Model):
     logger_name = models.CharField(max_length=100)
     level = models.PositiveSmallIntegerField(choices=LOG_LEVELS, default=logging.ERROR, db_index=True)
     msg = models.TextField()
@@ -25,5 +24,6 @@ class StatusLog(models.Model):
         return self.msg
 
     class Meta:
+        abstract = True
         ordering = ('-create_datetime',)
-        app_label = 'django_db_logger'
+        app_label = 'django_db_logger' 

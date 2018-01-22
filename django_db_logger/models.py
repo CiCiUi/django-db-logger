@@ -13,8 +13,7 @@ LOG_LEVELS = (
 )
 
 
-@python_2_unicode_compatible
-class StatusLog(models.Model):
+class StatusLogAbstract(models.Model):
     logger_name = models.CharField(max_length=100)
     level = models.PositiveSmallIntegerField(choices=LOG_LEVELS, default=logging.ERROR, db_index=True)
     msg = models.TextField()
@@ -23,6 +22,13 @@ class StatusLog(models.Model):
 
     def __str__(self):
         return self.msg
+
+    class Meta:
+        abstract = True
+
+
+@python_2_unicode_compatible
+class StatusLog(StatusLogAbstract):
 
     class Meta:
         ordering = ('-create_datetime',)

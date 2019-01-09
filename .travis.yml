@@ -31,4 +31,4 @@ matrix:
 install:
   - pip install Django==$DJANGO
 
-script: python manage.py test
+script: python test_manage.py test

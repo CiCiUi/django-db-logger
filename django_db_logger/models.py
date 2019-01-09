@@ -19,11 +19,11 @@ class StatusLog(models.Model):
     level = models.PositiveSmallIntegerField(choices=LOG_LEVELS, default=logging.ERROR, db_index=True)
     msg = models.TextField()
     trace = models.TextField(blank=True, null=True)
-    create_datetime = models.DateTimeField(auto_now_add=True)
+    create_datetime = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
 
     def __str__(self):
         return self.msg
 
     class Meta:
         ordering = ('-create_datetime',)
-        app_label = 'django_db_logger'
+        verbose_name_plural = verbose_name = 'Logging'

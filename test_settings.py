@@ -47,4 +47,4 @@ LOGGING = {
     }
 }
 
-SECRET_KEY = 'https://ciciui.com/'
+SECRET_KEY = 'jfkladsjfakljr;els'

@@ -29,7 +29,7 @@ class StatusLogAdmin(admin.ModelAdmin):
 
     def create_datetime_format(self, instance):
         return instance.create_datetime.strftime('%Y-%m-%d %X')
-    create_datetime_format.short_description = 'Create Datetime'
+    create_datetime_format.short_description = 'Created at'
 
 
 admin.site.register(StatusLog, StatusLogAdmin)

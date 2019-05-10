@@ -44,18 +44,22 @@ LOGGING = {
         },
     },
     'handlers': {
-        'db': {
+        'db_handler': {
             'level': 'DEBUG',
-            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
+            'formatter': 'verbose'
         }
     },
     'loggers': {
-        'db_logger': {
-            'handlers': ['db'],
+        'db': {
+            'handlers': ['db_handler'],
             'level': 'DEBUG'
         }
     }
 }
+
+DJANGO_DB_LOGGER_ENABLE_FORMATTER = True
+DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE = 30
 
 TEMPLATES = [
     {

@@ -3,6 +3,7 @@ import logging
 
 from django.contrib import admin
 from django.utils.html import format_html
+from django.utils import timezone
 
 from django_db_logger.config import DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE
 from .models import StatusLog
@@ -30,7 +31,8 @@ class StatusLogAdmin(admin.ModelAdmin):
 
     def create_datetime_format(self, instance):
         return format_html(
-            '<span style="white-space: nowrap;">%s</span>' % instance.create_datetime.strftime('%Y-%m-%d %X')
+            '<span style="white-space: nowrap;">%s</span>' % \
+                timezone.localtime(instance.create_datetime).strftime('%Y-%m-%d %X')
         )
     create_datetime_format.short_description = 'Created at'
 

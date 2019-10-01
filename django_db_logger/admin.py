@@ -34,5 +34,9 @@ class StatusLogAdmin(admin.ModelAdmin):
         )
     create_datetime_format.short_description = 'Created at'
 
+    def has_add_permission(self, request):
+        # Hide "Add" button from admin
+        return False
+
 
 admin.site.register(StatusLog, StatusLogAdmin)

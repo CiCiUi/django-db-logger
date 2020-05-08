@@ -15,8 +15,8 @@ Screenshot
 
 Dependency
 ----------
-* Django>=1.6
-* Python 2.6+/3.3+
+* Django>=1.9
+* Python 2.7+/3.6+
 
 License
 -------

@@ -16,7 +16,7 @@ INSTALLED_APPS = (
     'django_db_logger',
 )
 
-# django 1.10
+# < django 1.10
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

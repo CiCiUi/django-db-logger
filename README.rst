@@ -1,11 +1,11 @@
-=======================
-django-db-logger-magnet
-=======================
+==============
+django-db-logs
+==============
 
 Disclaimer
 ----------
 
-Update from djang-db-logger, by Magnet, due to inactivity of the original package.
+Update from djang-db-logger, due to inactivity of the original package.
 
 Original readme
 ---------------

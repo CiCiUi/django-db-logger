@@ -9,7 +9,7 @@ from .models import StatusLog
 
 
 class StatusLogAdmin(admin.ModelAdmin):
-    list_display = ('colored_msg', 'traceback', 'create_datetime_format')
+    list_display = ('logger_name', 'colored_msg', 'traceback', 'create_datetime_format')
     list_display_links = ('colored_msg', )
     list_filter = ('level', )
     list_per_page = DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE

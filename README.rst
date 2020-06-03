@@ -1,9 +1,14 @@
-================
-django-db-logger
-================
+=======================
+django-db-logger-magnet
+=======================
 
-.. image:: https://travis-ci.org/CiCiUi/django-db-logger.svg?branch=master
-    :target: https://travis-ci.org/CiCiUi/django-db-logger
+Disclaimer
+----------
+
+Update from djang-db-logger, by Magnet, due to inactivity of the original package.
+
+Original readme
+---------------
 
 Django logging in database.
 For large projects please use `Sentry <https://github.com/getsentry/sentry>`_

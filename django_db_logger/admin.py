@@ -9,10 +9,11 @@ from .models import StatusLog
 
 
 class StatusLogAdmin(admin.ModelAdmin):
-    list_display = ('colored_msg', 'traceback', 'create_datetime_format')
+    list_display = ('create_datetime_format', 'colored_msg', 'traceback', )
     list_display_links = ('colored_msg', )
     list_filter = ('level', )
     list_per_page = DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE
+    readonly_fields = ['logger_name', 'level', 'msg', 'trace', ]
 
     def colored_msg(self, instance):
         if instance.level in [logging.NOTSET, logging.INFO]:
@@ -28,8 +29,14 @@ class StatusLogAdmin(admin.ModelAdmin):
         return format_html('<pre><code>{content}</code></pre>', content=instance.trace if instance.trace else '')
 
     def create_datetime_format(self, instance):
-        return instance.create_datetime.strftime('%Y-%m-%d %X')
+        return format_html(
+            '<span style="white-space: nowrap;">%s</span>' % instance.create_datetime.strftime('%Y-%m-%d %X')
+        )
     create_datetime_format.short_description = 'Created at'
+
+    def has_add_permission(self, request):
+        # Hide "Add" button from admin
+        return False
 
 
 admin.site.register(StatusLog, StatusLogAdmin)

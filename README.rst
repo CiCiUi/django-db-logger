@@ -93,7 +93,7 @@ Options
 2. DJANGO_DB_LOGGER_ENABLE_FORMATTER: boolean. Using ``formatter`` options to format message. ``True`` or ``False``, default ``False``
 
 Build your own database logger :hammer:
-------
+---------------------------------------
 1. Create a new app and add it to ``INSTALLED_APPS``
 2. Copy files ``django-db-logger/models.py``, ``django-db-logger/admin.py``, ``django-db-logger/db_log_handler.py`` to the app folder
 3. Replace ``DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE`` in ``admin.py`` with an integer

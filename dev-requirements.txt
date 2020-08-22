@@ -1,0 +1,4 @@
+django
+six
+twine
+wheel

@@ -1,6 +1,7 @@
 import logging
 
 from django_db_logger.config import DJANGO_DB_LOGGER_ENABLE_FORMATTER, MSG_STYLE_SIMPLE
+from django_db_logger.config import DJANGO_DB_LOGGER_MAX_LOG_RECORDS
 
 
 db_default_formatter = logging.Formatter()
@@ -9,7 +10,7 @@ db_default_formatter = logging.Formatter()
 class DatabaseLogHandler(logging.Handler):
     def emit(self, record):
         from .models import StatusLog
-        
+
         trace = None
 
         if record.exc_info:
@@ -28,6 +29,7 @@ class DatabaseLogHandler(logging.Handler):
         }
 
         StatusLog.objects.create(**kwargs)
+        self.cleanup_status_log()
 
     def format(self, record):
         if self.formatter:
@@ -46,3 +48,12 @@ class DatabaseLogHandler(logging.Handler):
             return fmt.formatMessage(record)
         else:
             return fmt.format(record)
+
+    def cleanup_status_log(self):
+        from .models import StatusLog
+        if DJANGO_DB_LOGGER_MAX_LOG_RECORDS > 0 and \
+           StatusLog.objects.count() >DJANGO_DB_LOGGER_MAX_LOG_RECORDS:
+                # Remove olders records
+                queryset = StatusLog.objects.all()[DJANGO_DB_LOGGER_MAX_LOG_RECORDS:]
+                for row in queryset.iterator():
+                    row.delete()

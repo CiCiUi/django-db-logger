@@ -15,6 +15,7 @@ class StatusLogAdmin(admin.ModelAdmin):
     list_filter = ('level', )
     list_per_page = DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE
     readonly_fields = ['logger_name', 'level', 'msg', 'trace', ]
+    date_hierarchy = 'create_datetime'
 
     def colored_msg(self, instance):
         if instance.level in [logging.NOTSET, logging.INFO]:

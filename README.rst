@@ -57,4 +57,4 @@ The number of logged records can be limited with https://github.com/morlandi/dja
     ]
 
 
-so DJANGO_DB_LOGGER_MAX_LOG_RECORDS is nor required anymore.
+so DJANGO_DB_LOGGER_MAX_LOG_RECORDS is not required anymore.

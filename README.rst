@@ -2,92 +2,41 @@
 django-db-logger
 ================
 
-.. image:: https://travis-ci.org/CiCiUi/django-db-logger.svg?branch=master
-    :target: https://travis-ci.org/CiCiUi/django-db-logger
+I finally switched back to the original app https://github.com/CiCiUi/django-db-logger,
+customizing StatusLogAdmin in the local Django project as follows:
 
-Django logging in database.
-For large projects please use `Sentry <https://github.com/getsentry/sentry>`_
+```
+from django.contrib import admin
+from django.utils.html import format_html
+from django.utils import timezone
+from django_db_logger.models import StatusLog
+from django_db_logger.admin import StatusLogAdmin
 
-Screenshot
-----------
-.. image:: https://ciciui.github.io/django-db-logger/static/img/django-db-logger.png
-    :target: https://travis-ci.org/CiCiUi/django-db-logger
+################################################################################
+# Improved StatusLogAdmin
 
-Dependency
-----------
-* Django>=1.6
-* Python 2.6+/3.3+
+class StatusLogAdminEx(StatusLogAdmin):
+    list_display = ('create_datetime_format', 'colored_msg', 'traceback', )
+    list_display_links = ('create_datetime_format', )
+    list_filter = ('create_datetime', 'level', )
+    readonly_fields = ['logger_name', 'level', 'msg', 'trace', ]
+    date_hierarchy = 'create_datetime'
 
-License
--------
-MIT
+    def create_datetime_format(self, instance):
+        return format_html(
+            '<span style="white-space: nowrap;">%s</span>' % \
+                timezone.localtime(instance.create_datetime).strftime('%Y-%m-%d %X')
+        )
+    create_datetime_format.short_description = 'Created at'
 
-Quick start
------------
+    def has_add_permission(self, request):
+        # Hide "Add" button from admin
+        return False
 
-1. Install
+    def has_change_permission(self, request, obj=None):
+        # Hide "Save" button from admin
+        return False
 
-.. code-block:: bash
-
-    pip install django-db-logger
-
-2. Add "django_db_logger" to your ``INSTALLED_APPS`` setting like this
-
-.. code-block:: python
-
-    INSTALLED_APPS = (
-        ...
-        'django_db_logger',
-    )
-
-3. Add handler and logger to ``LOGGING`` setting like this
-
-.. code-block:: python
-
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'formatters': {
-            'verbose': {
-                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-            },
-            'simple': {
-                'format': '%(levelname)s %(asctime)s %(message)s'
-            },
-        },
-        'handlers': {
-            'db_log': {
-                'level': 'DEBUG',
-                'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
-            },
-        },
-        'loggers': {
-            'db': {
-                'handlers': ['db_log'],
-                'level': 'DEBUG'
-            }
-        }
-    }
-
-4. Run ``python manage.py migrate`` to create django-db-logger models.
-5. Use ``django-db-logger`` like this
-
-.. code-block:: python
-
-    import logging
-    db_logger = logging.getLogger('db')
-
-    db_logger.info('info message')
-    db_logger.warning('warning message')
-
-    try:
-        1/0
-    except Exception as e:
-        db_logger.exception(e)
-
-
-
-Options
--------
-1. DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE: integer. list per page in admin view. default ``10``
-2. DJANGO_DB_LOGGER_ENABLE_FORMATTER: boolean. Using ``formatter`` options to format message.``True`` or ``False``, default ``False``
+admin.site.unregister(StatusLog)
+admin.site.register(StatusLog, StatusLogAdminEx)
+```

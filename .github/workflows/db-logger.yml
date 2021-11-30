@@ -1,4 +1,4 @@
-name: InkPx Website
+name: Test
 
 on: [push, pull_request]
 

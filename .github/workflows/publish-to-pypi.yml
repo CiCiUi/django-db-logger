@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+name: Publish to PyPI
 
 on: push
 
@@ -10,6 +10,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        # fetch with tags https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches
+        fetch-depth: 0
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:

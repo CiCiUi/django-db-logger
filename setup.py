@@ -10,7 +10,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-db-logger',
     version='0.1.11',
-    use_scm_version=os.getenv('TestPypi') == 'yes',
+    use_scm_version=os.getenv('TestPypi') == 'yes',  # using `setuptools_scm` when publish to test.pypi
     setup_requires=['setuptools_scm'],
     packages=['django_db_logger', 'django_db_logger.migrations'],
     include_package_data=True,

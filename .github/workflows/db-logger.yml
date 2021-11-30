@@ -33,6 +33,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           django-version: ${{ matrix.django-version }}
+      - name: Upgrade Pip
+        run: pip install -U pip
       - name: Install Django
         run: pip install Django==${{ matrix.django-version }}
       - name: Test

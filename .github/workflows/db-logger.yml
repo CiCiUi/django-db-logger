@@ -32,7 +32,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-          django-version: ${{ matrix.django-version }}
       - name: Upgrade Pip
         run: pip install -U pip
       - name: Install six

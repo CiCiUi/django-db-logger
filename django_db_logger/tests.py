@@ -1,15 +1,18 @@
 # encoding: utf-8
 from __future__ import unicode_literals
+
 import logging
+
 from django.contrib.admin import AdminSite
 from django.test import TestCase
+
 from django_db_logger.admin import StatusLogAdmin
 from .models import StatusLog
 
 
 class TestDbLogger(TestCase):
     def setUp(self):
-        self.logger = logging.getLogger('db_logger')
+        self.logger = logging.getLogger('db')
         self.status_log_admin = StatusLogAdmin(StatusLog, AdminSite())
 
     def __test_log_aux(self, msg, fn, level):
@@ -22,25 +25,25 @@ class TestDbLogger(TestCase):
         return log
 
     def test_log(self):
-        log = self.__test_log_aux('Info Message - 信息', self.logger.info, logging.INFO)
+        log = self.__test_log_aux('Info Message', self.logger.info, logging.INFO)
         self.assertEqual(self.status_log_admin.colored_msg(log),
-                         '<span style="color: green;">Info Message - 信息</span>')
+                         '<span style="color: green;">Info Message</span>')
 
-        log = self.__test_log_aux('Debug Message - 调试', self.logger.debug, logging.DEBUG)
+        log = self.__test_log_aux('Debug Message', self.logger.debug, logging.DEBUG)
         self.assertEqual(self.status_log_admin.colored_msg(log),
-                         '<span style="color: orange;">Debug Message - 调试</span>')
+                         '<span style="color: orange;">Debug Message</span>')
 
-        log = self.__test_log_aux('Warning Message - 警告', self.logger.warning, logging.WARNING)
+        log = self.__test_log_aux('Warning Message', self.logger.warning, logging.WARNING)
         self.assertEqual(self.status_log_admin.colored_msg(log),
-                         '<span style="color: orange;">Warning Message - 警告</span>')
+                         '<span style="color: orange;">Warning Message</span>')
 
-        log = self.__test_log_aux('Error Message - 错误', self.logger.error, logging.ERROR)
+        log = self.__test_log_aux('Error Message', self.logger.error, logging.ERROR)
         self.assertEqual(self.status_log_admin.colored_msg(log),
-                         '<span style="color: red;">Error Message - 错误</span>')
+                         '<span style="color: red;">Error Message</span>')
 
-        log = self.__test_log_aux('Fatal Message - 致命错误', self.logger.fatal, logging.FATAL)
+        log = self.__test_log_aux('Fatal Message', self.logger.fatal, logging.FATAL)
         self.assertEqual(self.status_log_admin.colored_msg(log),
-                         '<span style="color: red;">Fatal Message - 致命错误</span>')
+                         '<span style="color: red;">Fatal Message</span>')
         self.assertEqual(self.status_log_admin.traceback(log), '<pre><code></code></pre>')
 
     def test_exception(self):

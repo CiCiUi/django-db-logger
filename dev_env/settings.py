@@ -42,12 +42,15 @@ LOGGING = {
         'simple': {
             'format': '%(levelname)s %(asctime)s %(message)s'
         },
+        'message_only': {
+            'format': '%(message)s'
+        }
     },
     'handlers': {
         'db_handler': {
             'level': 'DEBUG',
             'class': 'django_db_logger.db_log_handler.DatabaseLogHandler',
-            'formatter': 'verbose'
+            'formatter': 'message_only'
         }
     },
     'loggers': {

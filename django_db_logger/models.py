@@ -20,6 +20,12 @@ class StatusLog(models.Model):
     msg = models.TextField()
     trace = models.TextField(blank=True, null=True)
     create_datetime = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
+    details = models.JSONField(
+        _("details"),
+        help_text=_("Additional info about the log (e.g. GET request path and query params)."),
+        blank=False,
+        null=True,
+    )
 
     def __str__(self):
         return self.msg

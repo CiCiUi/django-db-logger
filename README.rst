@@ -96,6 +96,11 @@ Options
 -------
 1. DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE: integer. list per page in admin view. default ``10``
 2. DJANGO_DB_LOGGER_ENABLE_FORMATTER: boolean. Using ``formatter`` options to format message. ``True`` or ``False``, default ``False``
+3. DJANGO_DB_LOGGER_REQUEST_DETAILS: activate the model's ``details`` (JSON) field for storing certain additional log details
+4. DJANGO_DB_LOGGER_REQUEST_DETAILS_PATH: extract the ``path`` from the log record's request (if given) and add it to the JSON object stored within ``details`` (requires DJANGO_DB_LOGGER_REQUEST_DETAILS=True)
+5. DJANGO_DB_LOGGER_REQUEST_DETAILS_METHOD: extract the ``method`` from the log record's request (if given) and add it to the JSON object stored within ``details`` (requires DJANGO_DB_LOGGER_REQUEST_DETAILS=True)
+6. DJANGO_DB_LOGGER_REQUEST_DETAILS_GET_PARAMS: extract the ``GET`` contents from the log's request (if given) and add it to the JSON object stored within ``details`` (requires DJANGO_DB_LOGGER_REQUEST_DETAILS=True)
+7. DJANGO_DB_LOGGER_REQUEST_DETAILS_POST_PARAMS: extract the ``POST`` contents from the log's request (if given) and add it to the JSON object stored within ``details`` (requires DJANGO_DB_LOGGER_REQUEST_DETAILS=True)
 
 Build your own database logger :hammer:
 ---------------------------------------

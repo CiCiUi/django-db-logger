@@ -97,6 +97,43 @@ Options
 1. DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE: integer. list per page in admin view. default ``10``
 2. DJANGO_DB_LOGGER_ENABLE_FORMATTER: boolean. Using ``formatter`` options to format message. ``True`` or ``False``, default ``False``
 
+
+Define your own behaviour to log additional details:
+----------------------------------------------------
+Extend the ``DatabaseLogHandler`` to add your own configurations and functionality to  the ``add_details`` method:
+
+.. code-block:: python
+
+    # my_log_handlers.py
+    from django_db_logger.db_log_handler import DatabaseLogHandler
+
+    class MyDatabaseLogHandler(DatabaseLogHandler):
+        def add_details(self, record, log_fields):
+            """
+            Extract relevant details from the record's request:
+                * request path
+                * used HTTP method
+                * used GET params (within URL)
+            """
+            request = getattr(record, 'request', None)
+            if request:
+                log_fields['details'] = {
+                    'path': getattr(request, 'path', None),
+                    'method': getattr(request, 'method', None),
+                    'params': getattr(request, 'GET', None),
+                }
+
+
+And make sure to use your own class in the logging configuration:
+.. code-block:: python
+
+    # settings.py
+    LOGGING["handlers"]["db_log"] = {
+        "class": "my_project.my_log_handlers.MyDatabaseLogHandler",
+        "level": "DEBUG",
+    }
+
+
 Build your own database logger :hammer:
 ---------------------------------------
 1. Create a new app and add it to ``INSTALLED_APPS``
@@ -104,4 +141,4 @@ Build your own database logger :hammer:
 3. Replace ``DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE`` in ``admin.py`` with an integer
 4. Replace ``DJANGO_DB_LOGGER_ENABLE_FORMATTER`` in `db_log_handler.py` with ``True`` or ``False``. Remove ``MSG_STYLE_SIMPLE``, it was not used.
 5. Replace logger class ``django_db_logger.db_log_handler.DatabaseLogHandler`` in your Settings with the new logger class
-6. Customize the looger to meet your needs. :beer:
+6. Customize the logger to meet your needs. :beer:

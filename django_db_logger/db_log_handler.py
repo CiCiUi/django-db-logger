@@ -1,7 +1,6 @@
 import logging
 
-from django_db_logger.config import DJANGO_DB_LOGGER_ENABLE_FORMATTER, MSG_STYLE_SIMPLE
-
+from django_db_logger.config import DJANGO_DB_LOGGER_ENABLE_FORMATTER
 
 db_default_formatter = logging.Formatter()
 
@@ -9,7 +8,7 @@ db_default_formatter = logging.Formatter()
 class DatabaseLogHandler(logging.Handler):
     def emit(self, record):
         from .models import StatusLog
-        
+
         trace = None
 
         if record.exc_info:
@@ -26,6 +25,9 @@ class DatabaseLogHandler(logging.Handler):
             'msg': msg,
             'trace': trace
         }
+
+        # extract relevant log details from the record
+        self.add_details(record, kwargs)
 
         StatusLog.objects.create(**kwargs)
 
@@ -46,3 +48,9 @@ class DatabaseLogHandler(logging.Handler):
             return fmt.formatMessage(record)
         else:
             return fmt.format(record)
+
+    def add_details(self, record, log_fields):
+        """
+        Add the record's relevant details to the log_fields
+        """
+        pass

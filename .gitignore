@@ -8,4 +8,4 @@ dist
 .coding-ide
 dev.db
 build
-
+.eggs

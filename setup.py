@@ -14,7 +14,7 @@ def local_scheme(version):
 
 setup(
     name='django-db-logger',
-    version='0.1.12',
+    version='0.1.13',
     use_scm_version={"local_scheme": local_scheme} if os.getenv('TestPypi') == 'yes' else False,  # using `setuptools_scm` when publish to test.pypi
     setup_requires=['setuptools_scm'],
     packages=['django_db_logger', 'django_db_logger.migrations'],
@@ -33,9 +33,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',

@@ -105,3 +105,5 @@ Build your own database logger :hammer:
 4. Replace ``DJANGO_DB_LOGGER_ENABLE_FORMATTER`` in `db_log_handler.py` with ``True`` or ``False``. Remove ``MSG_STYLE_SIMPLE``, it was not used.
 5. Replace logger class ``django_db_logger.db_log_handler.DatabaseLogHandler`` in your Settings with the new logger class
 6. Customize the looger to meet your needs. :beer:
+
+test test

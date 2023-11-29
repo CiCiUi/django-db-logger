@@ -15,7 +15,7 @@ def local_scheme(version):
 setup(
     name='django-db-logger',
     version='0.1.13',
-    use_scm_version={"local_scheme": local_scheme} if os.getenv('TestPypi') == 'yes' else False,  # using `setuptools_scm` when publish to test.pypi
+    # use_scm_version={"local_scheme": local_scheme} if os.getenv('TestPypi') == 'yes' else False,  # using `setuptools_scm` when publish to test.pypi
     setup_requires=['setuptools_scm'],
     packages=['django_db_logger', 'django_db_logger.migrations'],
     include_package_data=True,

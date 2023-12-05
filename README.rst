@@ -96,6 +96,7 @@ Options
 -------
 1. DJANGO_DB_LOGGER_ADMIN_LIST_PER_PAGE: integer. list per page in admin view. default ``10``
 2. DJANGO_DB_LOGGER_ENABLE_FORMATTER: boolean. Using ``formatter`` options to format message. ``True`` or ``False``, default ``False``
+3. DJANGO_DB_LOGGER_MAX_LOG_RECORDS: integer. Max log records in database. default ``0`` (unlimited)
 
 Build your own database logger :hammer:
 ---------------------------------------
